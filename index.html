@@ -1,1391 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="CoreCloud Kenya offers secure cloud hosting, IT consulting, and custom software solutions to empower businesses.">
-  <meta name="keywords" content="cloud hosting, IT consulting, web development, app development, Kenya">
-  <link rel="icon" href="images/favicon.ico">
-  <link rel="canonical" href="https://corecloudkenya.com/">
-  <title>CoreCloud Kenya - Secure Cloud Solutions & IT Services</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --primary-purple: #8B5CF6;
-      --primary-cyan: #06FCEB;
-      --dark-bg: #0a0a1a;
-      --card-bg: rgba(20,20,40,0.7);
-      --text-primary: #E0E0FF;
-      --text-secondary: #ccc;
-      --border-color: rgba(139,92,246,0.3);
-      --shadow-purple: rgba(139,92,246,0.8);
-      --shadow-cyan: rgba(6,252,235,0.5);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: var(--dark-bg);
-      font-family: "Inter", sans-serif;
-      color: var(--text-primary);
-      overflow-x: hidden;
-      line-height: 1.6;
-    }
-
-    /* Skip link for accessibility */
-    .skip-link {
-      position: absolute;
-      top: -40px;
-      left: 6px;
-      background: var(--primary-purple);
-      color: white;
-      padding: 8px;
-      text-decoration: none;
-      z-index: 10000;
-      border-radius: 4px;
-    }
-
-    .skip-link:focus {
-      top: 6px;
-    }
-
-    /* Particle canvas */
-    .particles-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      pointer-events: none;
-    }
-
-    h1, h2, h3 {
-      font-family: "Poppins", sans-serif;
-      letter-spacing: 1.5px;
-    }
-
-    /* Header */
-    header {
-      padding: 20px 60px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(10,10,30,0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border-color);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      transition: transform 0.3s ease-in-out;
-    }
-
-    header h1 {
-      font-size: 24px;
-      color: var(--primary-purple);
-      text-transform: uppercase;
-    }
-
-    header img {
-      height: 60px;
-      width: auto;
-      display: block;
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: var(--text-primary);
-      font-weight: 600;
-      transition: color 0.3s;
-      padding: 8px 12px;
-      border-radius: 6px;
-    }
-
-    nav a:hover,
-    nav a:focus {
-      color: var(--primary-cyan);
-      outline: 2px solid var(--primary-cyan);
-      outline-offset: 2px;
-    }
-
-    /* Mobile menu button */
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      color: var(--text-primary);
-      font-size: 24px;
-      cursor: pointer;
-      padding: 8px;
-    }
-
-    /* Hero Section */
-    .hero {
-      text-align: center;
-      padding: 120px 20px 80px;
-      position: relative;
-      overflow: hidden;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .hero-content {
-      max-width: 800px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero h2 {
-      font-size: clamp(2.5rem, 5vw, 3.5rem);
-      background: linear-gradient(90deg, var(--primary-purple), var(--primary-cyan));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 20px;
-      text-transform: uppercase;
-    }
-
-    .hero p {
-      font-size: clamp(1rem, 2vw, 1.125rem);
-      color: var(--text-secondary);
-      margin-bottom: 15px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .orbit-ring {
-      position: absolute;
-      border: 2px dashed var(--border-color);
-      border-radius: 50%;
-      animation: spin 20s linear infinite;
-      z-index: 1;
-    }
-
-    .orbit1 {
-      width: 400px;
-      height: 400px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    .orbit2 {
-      width: 600px;
-      height: 600px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      animation-duration: 35s;
-    }
-
-    @keyframes spin {
-      from { transform: translate(-50%, -50%) rotate(0deg); }
-      to { transform: translate(-50%, -50%) rotate(360deg); }
-    }
-
-    .btn {
-      background: linear-gradient(90deg, var(--primary-purple), var(--primary-cyan));
-      color: #fff;
-      border: none;
-      border-radius: 12px;
-      padding: 14px 28px;
-      font-weight: 700;
-      text-decoration: none;
-      box-shadow: 0 0 10px var(--shadow-purple), 0 0 25px var(--shadow-cyan);
-      transition: all 0.3s ease-in-out;
-      display: inline-block;
-      margin-top: 30px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-
-    .btn:hover,
-    .btn:focus {
-      transform: translateY(-2px);
-      box-shadow: 0 0 18px var(--shadow-purple), 0 0 35px var(--shadow-cyan);
-      outline: 2px solid var(--primary-cyan);
-      outline-offset: 2px;
-    }
-
-    /* Stats cards */
-    .hero-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 24px;
-      margin-top: 60px;
-      max-width: 900px;
-      width: 100%;
-    }
-
-    .hero-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      padding: 24px;
-      text-align: center;
-      box-shadow: 0 0 12px var(--shadow-purple);
-      transition: transform 0.3s, box-shadow 0.3s;
-      backdrop-filter: blur(10px);
-    }
-
-    .hero-card:hover,
-    .hero-card:focus-within {
-      transform: translateY(-10px);
-      box-shadow: 0 0 25px var(--shadow-purple);
-    }
-
-    .hero-card h3 {
-      color: var(--primary-cyan);
-      margin-bottom: 8px;
-      font-size: 16px;
-      font-weight: 600;
-    }
-
-    .hero-card .counter {
-      color: var(--primary-purple);
-      font-size: 28px;
-      font-weight: 700;
-    }
-
-    /* Services Section */
-    .services {
-      padding: 100px 20px;
-      text-align: center;
-      position: relative;
-      background: linear-gradient(rgba(10,10,30,0.9), rgba(10,10,30,0.9));
-    }
-
-    .section-title {
-      font-size: clamp(2rem, 4vw, 2.5rem);
-      margin-bottom: 15px;
-      color: var(--primary-cyan);
-      text-transform: uppercase;
-    }
-
-    .section-subtitle {
-      font-size: 1.1rem;
-      color: var(--text-secondary);
-      margin-bottom: 50px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .service-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      padding: 30px;
-      border-radius: 15px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
-      backdrop-filter: blur(10px);
-      opacity: 0;
-      transform: translateY(20px);
-    }
-
-    .service-card.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .service-card i {
-      color: var(--primary-purple);
-      margin-bottom: 15px;
-      text-shadow: 0 0 10px var(--primary-purple);
-      transition: all 0.3s ease;
-    }
-
-    .service-card h3 {
-      margin: 10px 0 15px;
-      font-size: 1.3rem;
-      color: #fff;
-      text-transform: none;
-    }
-
-    .service-card p {
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
-
-    .service-card:hover,
-    .service-card:focus-within {
-      transform: translateY(-10px);
-      box-shadow: 0 0 30px var(--shadow-purple);
-    }
-
-    .service-card:hover i {
-      transform: scale(1.2);
-      color: var(--primary-cyan);
-    }
-
-    /* About Section */
-    .about {
-      padding: 80px 20px;
-      background: rgba(10,10,30,0.95);
-      backdrop-filter: blur(8px);
-      position: relative;
-    }
-
-    .about-header {
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto 60px;
-    }
-
-    .about-header h2 {
-      font-size: clamp(2rem, 4vw, 2.5rem);
-      color: var(--primary-cyan);
-      margin-bottom: 12px;
-      text-transform: uppercase;
-    }
-
-    .about-header h3 {
-      font-size: 1.5rem;
-      color: var(--primary-purple);
-      margin-bottom: 20px;
-      text-transform: none;
-      font-weight: 600;
-    }
-
-    .about-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-    }
-
-    .about-text,
-    .about-image {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s ease;
-    }
-
-    .about-text.visible,
-    .about-image.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .about-text h3 {
-      font-size: 1.5rem;
-      color: var(--primary-purple);
-      margin-bottom: 15px;
-      text-transform: none;
-      font-weight: 600;
-    }
-
-    .about-text p {
-      font-size: 16px;
-      line-height: 1.7;
-      color: var(--text-secondary);
-      margin-bottom: 30px;
-    }
-
-    .about-image img {
-      width: 100%;
-      border-radius: 16px;
-      border: 1px solid var(--border-color);
-      box-shadow: 0 0 20px var(--shadow-purple);
-    }
-
-    /* Contact Section */
-    .contact {
-      padding: 80px 20px;
-      background: rgba(10,10,30,0.95);
-      backdrop-filter: blur(10px);
-      position: relative;
-    }
-
-    .contact-header {
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto 60px;
-    }
-
-    .contact-header h2 {
-      font-size: clamp(2rem, 4vw, 2.5rem);
-      color: var(--primary-cyan);
-      margin-bottom: 12px;
-      text-transform: uppercase;
-    }
-
-    .contact-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      max-width: 1000px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-    }
-
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .contact-form label {
-      font-size: 14px;
-      color: var(--text-primary);
-      font-weight: 600;
-      margin-bottom: 5px;
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-      padding: 14px 16px;
-      border-radius: 12px;
-      border: 1px solid var(--border-color);
-      background: var(--card-bg);
-      color: var(--text-primary);
-      font-size: 16px;
-      outline: none;
-      transition: all 0.3s ease;
-      font-family: inherit;
-    }
-
-    .contact-form input:focus,
-    .contact-form textarea:focus {
-      border-color: var(--primary-cyan);
-      box-shadow: 0 0 12px var(--primary-cyan);
-    }
-
-    .contact-form textarea {
-      resize: vertical;
-      min-height: 120px;
-    }
-
-    .contact-info {
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-    }
-
-    .info-item h3 {
-      color: var(--primary-purple);
-      margin-bottom: 8px;
-      font-size: 1.2rem;
-      text-transform: none;
-      font-weight: 600;
-    }
-
-    .info-item p {
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
-
-    /* Footer */
-    footer {
-      padding: 60px 20px;
-      background: rgba(10,10,20,0.9);
-      border-top: 1px solid var(--border-color);
-      backdrop-filter: blur(12px);
-      color: var(--text-secondary);
-      position: relative;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 40px;
-      margin-bottom: 30px;
-      max-width: 1200px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .footer-col h2.footer-logo {
-      font-size: 24px;
-      color: var(--primary-purple);
-      margin-bottom: 12px;
-      text-transform: uppercase;
-    }
-
-    .footer-col h3 {
-      font-size: 18px;
-      margin-bottom: 16px;
-      color: var(--primary-cyan);
-      text-transform: none;
-      font-weight: 600;
-    }
-
-    .footer-col ul {
-      list-style: none;
-    }
-
-    .footer-col ul li {
-      margin-bottom: 10px;
-    }
-
-    .footer-col ul li a {
-      color: var(--text-secondary);
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    .footer-col ul li a:hover,
-    .footer-col ul li a:focus {
-      color: var(--primary-purple);
-      outline: 1px solid var(--primary-purple);
-      outline-offset: 2px;
-    }
-
-    .footer-bottom {
-      border-top: 1px solid var(--border-color);
-      padding-top: 16px;
-      text-align: center;
-      font-size: 14px;
-      color: #888;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .social-icons {
-      margin-top: 16px;
-      display: flex;
-      gap: 16px;
-    }
-
-    .social {
-      color: var(--text-secondary);
-      transition: all 0.3s ease;
-      padding: 8px;
-      border-radius: 6px;
-    }
-
-    .social:hover,
-    .social:focus {
-      color: var(--primary-purple);
-      filter: drop-shadow(0 0 8px var(--primary-cyan));
-      outline: 2px solid var(--primary-purple);
-      outline-offset: 2px;
-    }
-
-    /* Loading state */
-    .loading {
-      opacity: 0.5;
-      pointer-events: none;
-    }
-
-    /* Error state */
-    .error {
-      color: #ff6b6b;
-      background: rgba(255, 107, 107, 0.1);
-      border: 1px solid #ff6b6b;
-      padding: 10px;
-      border-radius: 6px;
-      margin-top: 10px;
-    }
-
-    .success {
-      color: #51cf66;
-      background: rgba(81, 207, 102, 0.1);
-      border: 1px solid #51cf66;
-      padding: 10px;
-      border-radius: 6px;
-      margin-top: 10px;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 1024px) {
-      .about-content,
-      .contact-content {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      header {
-        padding: 20px 30px;
-      }
-
-      nav {
-        display: none;
-      }
-
-      .mobile-menu-btn {
-        display: block;
-      }
-
-      .nav-mobile {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: rgba(10,10,30,0.98);
-        padding: 20px;
-        flex-direction: column;
-        gap: 15px;
-        border-bottom: 1px solid var(--border-color);
-      }
-
-      .nav-mobile.active {
-        display: flex;
-      }
-
-      .orbit1 {
-        width: 300px;
-        height: 300px;
-      }
-
-      .orbit2 {
-        width: 450px;
-        height: 450px;
-      }
-
-      .hero-cards {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 16px;
-      }
-
-      .services-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      header {
-        padding: 15px 20px;
-      }
-
-      .hero {
-        padding: 100px 15px 60px;
-      }
-
-      .services,
-      .about,
-      .contact {
-        padding: 60px 15px;
-      }
-
-      footer {
-        padding: 40px 15px;
-      }
-
-      .hero-cards {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* Animations */
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
-    }
-
-    /* Focus improvements */
-    *:focus-visible {
-      outline: 2px solid var(--primary-cyan);
-      outline-offset: 2px;
-    }
-
-    /* High contrast mode support */
-    @media (prefers-contrast: high) {
-      .hero h2 {
-        color: #ffffff;
-        background: none;
-        -webkit-text-fill-color: unset;
-      }
-      
-      .service-card,
-      .hero-card {
-        border: 2px solid var(--text-primary);
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoreCloud - Secure Cloud Hosting & Software Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Smooth scrolling for anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Ensure images don't overflow */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
 </head>
-
-<body>
-  <!-- Skip link for screen readers -->
-  <a href="#main-content" class="skip-link">Skip to main content</a>
-
-  <!-- JSON-LD Schema for SEO -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "CoreCloud Kenya",
-      "description": "Secure cloud hosting, IT consulting, and custom software solutions in Kenya",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "View Park Towers, 19th Floor Monrovia Street",
-        "addressLocality": "Nairobi",
-        "addressCountry": "KE"
-      },
-      "email": "info@corecloudkenya.com",
-      "telephone": "+254793554535",
-      "url": "https://corecloudkenya.com",
-      "sameAs": [
-        "https://www.facebook.com/corecloudkenya",
-        "https://www.twitter.com/corecloudkenya",
-        "https://www.linkedin.com/company/corecloudkenya"
-      ]
-    }
-  </script>
-
-  <!-- Background particles -->
-  <canvas class="particles-canvas" id="particles" aria-hidden="true"></canvas>
-
-  <header role="banner">
-    <div>
-      <img src=" images/darklogo.png" alt="CoreCloud Kenya" class="logo">
-    </div>
-    <nav role="navigation" aria-label="Main navigation">
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <button class="mobile-menu-btn" aria-label="Toggle mobile menu" id="mobile-menu-toggle">
-      <i class="fas fa-bars"></i>
-    </button>
-    <nav class="nav-mobile" id="mobile-nav" role="navigation" aria-label="Mobile navigation">
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
-
-  <main id="main-content">
-    <!-- Hero Section -->
-    <section class="hero" id="hero" role="banner">
-      <div class="orbit-ring orbit1" aria-hidden="true"></div>
-      <div class="orbit-ring orbit2" aria-hidden="true"></div>
-      
-      <div class="hero-content">
-        <h1>ELEVATING BUSINESSES THROUGH SECURE CLOUD HOSTING</h1>
-        <p>Empowering businesses with cutting-edge software solutions tailored to their unique needs. Our talented team of experts delivers innovative technology that drives growth, efficiency, and success in today's fast-paced digital world.</p>
-        <p><strong>Secure • Scalable • Smart Solutions</strong></p>
-        
-        <div class="hero-cards" role="region" aria-label="Company statistics">
-          <div class="hero-card">
-            <h3>Happy Clients</h3>
-            <p><span class="counter" data-target="30" aria-live="polite">0</span>+</p>
-          </div>
-          <div class="hero-card">
-            <h3>Systems Active</h3>
-            <p><span class="counter" data-target="25" aria-live="polite">0</span>+</p>
-          </div>
-          <div class="hero-card">
-            <h3>Hours in Support</h3>
-            <p><span class="counter" data-target="300" aria-live="polite">0</span>+</p>
-          </div>
-          <div class="hero-card">
-            <h3>Partners who trust us</h3>
-            <p><span class="counter" data-target="6" aria-live="polite">0</span></p>
-          </div>
+<body class="font-sans text-gray-800 bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-blue-900 text-white p-4 sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center flex-wrap">
+            <div class="text-2xl font-bold">CoreCloud</div>
+            <div class="space-x-4 md:flex hidden">
+                <a href="#about" class="hover:text-blue-300">About</a>
+                <a href="#services" class="hover:text-blue-300">Services</a>
+                <a href="#contact" class="hover:text-blue-300">Contact</a>
+            </div>
+            <button class="md:hidden focus:outline-none" onclick="toggleMenu()">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+            <div id="mobile-menu" class="hidden w-full md:hidden flex-col space-y-2 mt-4">
+                <a href="#about" class="hover:text-blue-300">About</a>
+                <a href="#services" class="hover:text-blue-300">Services</a>
+                <a href="#contact" class="hover:text-blue-300">Contact</a>
+            </div>
         </div>
-        
-        <a href="#contact" class="btn">Get Started Today</a>
-      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-16 md:py-24">
+        <div class="container mx-auto text-center px-4">
+            <h1 class="text-3xl md:text-5xl font-bold mb-4">Elevating Businesses Through Secure Cloud Hosting</h1>
+            <p class="text-lg md:text-xl mb-6 max-w-2xl mx-auto">Empowering businesses with cutting-edge software solutions tailored to their unique needs. Our talented team of experts delivers innovative technology that drives growth, efficiency, and success in today's fast-paced digital world.</p>
+            <p class="text-md md:text-lg font-semibold mb-8">Secure • Scalable • Smart Solutions</p>
+            <a href="#contact" class="bg-white text-blue-900 px-6 py-3 rounded-full font-semibold hover:bg-blue-100">Get Started Today</a>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center px-4">
+            <div>
+                <h3 class="text-3xl font-bold text-blue-900">100+</h3>
+                <p>Happy Clients</p>
+            </div>
+            <div>
+                <h3 class="text-3xl font-bold text-blue-900">200+</h3>
+                <p>Systems Active</p>
+            </div>
+            <div>
+                <h3 class="text-3xl font-bold text-blue-900">5000+</h3>
+                <p>Hours in Support</p>
+            </div>
+            <div>
+                <h3 class="text-3xl font-bold text-blue-900">50+</h3>
+                <p>Partners who trust us</p>
+            </div>
+        </div>
     </section>
 
     <!-- About Section -->
-    <section class="about" id="about" role="region" aria-labelledby="about-heading">
-      <div class="about-header">
-        <h2 id="about-heading">About CoreCloud</h2>
-        <h3>Who We Are</h3>
-        <p>At CoreCloud, we're a team of passionate innovators transforming businesses through technology and design. From Cloud Hosting, IT Consulting, Web & App Development to Software solutions, we deliver tailored solutions that help our clients grow and thrive. Driven by creativity, collaboration, and a commitment to excellence, we work closely with every client to craft results that exceed expectations. Let's build something amazing together.</p>
-      </div>
-      
-      <div class="about-content">
-        <div class="about-text">
-          <h3>Our Mission</h3>
-          <p>To deliver reliable, scalable, and innovative cloud solutions tailored to the unique needs of each client. We strive to simplify technology, enhance efficiency, and drive growth by providing exceptional services in cloud hosting, IT consulting, web and app development, and digital solutions that transform businesses.</p>
-          
-          <h3>Our Vision</h3>
-          <p>To be Kenya's most trusted cloud solutions provider, empowering businesses to innovate, scale, and thrive in the digital era. We envision a future where every organization, big or small, can access secure, smart, and cutting-edge cloud technology.</p>
+    <section id="about" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">About CoreCloud</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4">Who We Are</h3>
+                    <p>At CoreCloud, we're a team of passionate innovators transforming businesses through technology and design. From Cloud Hosting, IT Consulting, Web & App Development to Software solutions, we deliver tailored solutions that help our clients grow and thrive. Driven by creativity, collaboration, and a commitment to excellence, we work closely with every client to craft results that exceed expectations. Let's build something amazing together.</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4">Our Mission</h3>
+                    <p>To deliver reliable, scalable, and innovative cloud solutions tailored to the unique needs of each client. We strive to simplify technology, enhance efficiency, and drive growth
+
+ by providing exceptional services in cloud hosting, IT consulting, web and app development, and digital solutions that transform businesses.</p>
+                </div>
+                <div class="md:col-span-2">
+                    <h3 class="text-2xl font-semibold mb-4 text-center">Our Vision</h3>
+                    <p class="text-center max-w-3xl mx-auto">To be Kenya's most trusted cloud solutions provider, empowering businesses to innovate, scale, and thrive in the digital era. We envision a future where every organization, big or small, can access secure, smart, and cutting-edge cloud technology.</p>
+                </div>
+            </div>
         </div>
-        
-        <div class="about-image">
-          <img src="images/team.jpg" alt="CoreCloud team working together" loading="lazy">
-        </div>
-      </div>
     </section>
 
     <!-- Services Section -->
-    <section class="services" id="services" role="region" aria-labelledby="services-heading">
-      <h2 id="services-heading" class="section-title">Our Services</h2>
-      <p class="section-subtitle">We offer a wide range of solutions to help businesses thrive in the digital age.</p>
-
-      <div class="services-grid">
-        <article class="service-card">
-          <i class="fas fa-globe fa-3x" aria-hidden="true"></i>
-          <h3>Creative Web Design</h3>
-          <p>At CoreCloud, we believe a website should tell your story and connect with your audience. Our designs blend modern, futuristic styles with user-friendly layouts, creating sites that are fast, mobile-ready, and visually striking. From small businesses in Nairobi to companies across Africa, we craft digital experiences that feel fresh, engaging, and uniquely African.</p>
-        </article>
-
-        <article class="service-card">
-          <i class="fas fa-cloud fa-3x" aria-hidden="true"></i>
-          <h3>Secure Cloud Hosting & VPS</h3>
-          <p>We understand that small and large businesses alike need reliable hosting they can trust without breaking the bank. That's why we offer secure and scalable cloud solutions at affordable rates. Our hosting keeps your data safe, your site always online, and your business ready to grow — whether you're in Nairobi or serving clients across Africa.</p>
-        </article>
-
-        <article class="service-card">
-          <i class="fas fa-code fa-3x" aria-hidden="true"></i>
-          <h3>Smart Software Solutions</h3>
-          <p>Our team of experts build smart, practical software that helps businesses work faster and smarter. From custom apps to business tools, our solutions are designed to solve real challenges and fit the unique needs of Kenyan businesses. With affordable options and a focus on ease of use, we make technology work for you — so you can focus on growing your business.</p>
-        </article>
-
-        <article class="service-card">
-          <i class="fas fa-mobile-phone fa-3x" aria-hidden="true"></i>
-          <h3>Custom App Solutions</h3>
-          <p>Powered with the latest designs and AI models, we design apps tailored to the way you do business. Whether it's a mobile app for your customers or a tool to streamline your operations, our custom solutions are built to be simple, reliable, and affordable. We work closely with you to turn your ideas into apps that help your business grow.</p>
-        </article>
-      </div>
+    <section id="services" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">Our Services</h2>
+            <p class="text-center mb-12 max-w-2xl mx-auto">We offer a wide range of solutions to help businesses thrive in the digital age.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="p-6 bg-gray-50 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Creative Web Design</h3>
+                    <p>At CoreCloud, we believe a website should tell your story and connect with your audience. Our designs blend modern, futuristic styles with user-friendly layouts, creating sites that are fast, mobile-ready, and visually striking. From small businesses in Nairobi to companies across Africa, we craft digital experiences that feel fresh, engaging, and uniquely African.</p>
+                </div>
+                <div class="p-6 bg-gray-50 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Secure Cloud Hosting & VPS</h3>
+                    <p>We understand that small and large businesses alike need reliable hosting they can trust without breaking the bank. That's why we offer secure and scalable cloud solutions at affordable rates. Our hosting keeps your data safe, your site always online, and your business ready to grow — whether you're in Nairobi or serving clients across Africa.</p>
+                </div>
+                <div class="p-6 bg-gray-50 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Smart Software Solutions</h3>
+                    <p>Our team of experts build smart, practical software that helps businesses work faster and smarter. From custom apps to business tools, our solutions are designed to solve real challenges and fit the unique needs of Kenyan businesses. With affordable options and a focus on ease of use, we make technology work for you — so you can focus on growing your business.</p>
+                </div>
+                <div class="p-6 bg-gray-50 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Custom App Solutions</h3>
+                    <p>Powered with the latest designs and AI models, we design apps tailored to the way you do business. Whether it's a mobile app for your customers or a tool to streamline your operations, our custom solutions are built to be simple, reliable, and affordable. We work closely with you to turn your ideas into apps that help your business grow.</p>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="contact" id="contact" role="region" aria-labelledby="contact-heading">
-      <div class="contact-header">
-        <h2 id="contact-heading">Get In Touch</h2>
-        <p>Have questions or want to start your project? Reach out to us and we'll respond promptly.</p>
-      </div>
-      
-      <div class="contact-content">
-        <form class="contact-form" id="contact-form" novalidate>
-          <div class="form-group">
-            <label for="contact-name">Your Name *</label>
-            <input type="text" id="contact-name" name="name" required aria-describedby="name-error">
-            <div class="error" id="name-error" role="alert" style="display: none;"></div>
-          </div>
-          
-          <div class="form-group">
-            <label for="contact-email">Your Email *</label>
-            <input type="email" id="contact-email" name="email" required aria-describedby="email-error">
-            <div class="error" id="email-error" role="alert" style="display: none;"></div>
-          </div>
-          
-          <div class="form-group">
-            <label for="contact-message">Your Message *</label>
-            <textarea id="contact-message" name="message" rows="5" required aria-describedby="message-error"></textarea>
-            <div class="error" id="message-error" role="alert" style="display: none;"></div>
-          </div>
-          
-          <button type="submit" class="btn btn-glow">
-            <span class="btn-text">Send Message</span>
-            <span class="btn-loader" style="display: none;">Sending...</span>
-          </button>
-          
-          <div id="form-status" role="alert" aria-live="polite"></div>
-        </form>
-        
-        <div class="contact-info">
-          <div class="info-item">
-            <h3><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Location</h3>
-            <p>View Park Towers,<br>19th Floor Monrovia Street,<br>NAIROBI, KENYA.</p>
-          </div>
-          
-          <div class="info-item">
-            <h3><i class="fas fa-envelope" aria-hidden="true"></i> Email</h3>
-            <p>
-              <a href="mailto:info@corecloudkenya.com">info@corecloudkenya.com</a><br>
-              <a href="mailto:info.corecloudkenya@gmail.com">info.corecloudkenya@gmail.com</a>
-            </p>
-          </div>
-          
-          <div class="info-item">
-            <h3><i class="fas fa-phone" aria-hidden="true"></i> Phone</h3>
-            <p><a href="tel:+254793554535">+254 793 554 535</a></p>
-          </div>
+    <section id="contact" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">Get In Touch</h2>
+            <p class="text-center mb-12 max-w-2xl mx-auto">Have questions or want to start your project? Reach out to us and we'll respond promptly.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <form id="contact-form" class="space-y-4">
+                        <div>
+                            <label for="name" class="block text-sm font-medium">Your Name *</label>
+                            <input type="text" id="name" required class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-900">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium">Your Email *</label>
+                            <input type="email" id="email" required class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-900">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium">Your Message *</label>
+                            <textarea id="message" required class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-900" rows="5"></textarea>
+                        </div>
+                        <button type="submit" class="bg-blue-900 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-800">Send Message</button>
+                        <p id="form-status" class="text-sm"></p>
+                    </form>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-xl font-semibold">Location</h3>
+                        <p>View Park Towers,<br>19th Floor Monrovia Street,<br>Nairobi, Kenya</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold">Email</h3>
+                        <p><a href="mailto:info@corecloudkenya.com" class="hover:text-blue-900">info@corecloudkenya.com</a><br>
+                        <a href="mailto:info.corecloudkenya@gmail.com" class="hover:text-blue-900">info.corecloudkenya@gmail.com</a></p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold">Phone</h3>
+                        <p><a href="tel:+254793554535" class="hover:text-blue-900">+254 793 554 535</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
-  </main>
 
-  <!-- Footer -->
-  <footer role="contentinfo">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <h2 class="footer-logo">CoreCloud</h2>
-        <p>Innovating Kenya's digital future with secure and scalable solutions.</p>
-        <div class="social-icons">
-          <a href="#" class="social" aria-label="Follow us on Facebook">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3.6L18 10h-4V7a1 1 0 0 1 1-1h3z"/>
-            </svg>
-          </a>
-          <a href="#" class="social" aria-label="Follow us on Instagram">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-              <path d="M16 11.37a4 4 0 1 1-2.91-2.91"/>
-            </svg>
-          </a>
-          <a href="#" class="social" aria-label="Follow us on GitHub">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77 5.44 5.44 0 0 0 3.5 8.5c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 21.13V25"/>
-            </svg>
-          </a>
-          <a href="#" class="social" aria-label="Follow us on Twitter">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6.1-2C4.3 16 2 9.5 2 9.5c0 0 4.7-1.2 6 4-.9-4.2 4.7-6.3 7-3.6z"/>
-            </svg>
-          </a>
+    <!-- Blog Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">From Our Blog</h2>
+            <ul class="list-disc list-inside max-w-2xl mx-auto space-y-2">
+                <li><a href="#" class="hover:text-blue-900">🚀 The Future of Cloud in Africa</a></li>
+                <li><a href="#" class="hover:text-blue-900">🔒 Why Secure Hosting Matters</a></li>
+                <li><a href="#" class="hover:text-blue-900">💡 Top 5 IT Trends in 2025</a></li>
+            </ul>
         </div>
-      </div>
-      
-      <div class="footer-col">
-        <h3>From Our Blog</h3>
-        <ul>
-          <li><a href="#">🚀 The Future of Cloud in Africa</a></li>
-          <li><a href="#">🔒 Why Secure Hosting Matters</a></li>
-          <li><a href="#">💡 Top 5 IT Trends in 2025</a></li>
-        </ul>
-      </div>
-      
-      <div class="footer-col">
-        <h3>Contact Us</h3>
-        <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Nairobi, Kenya</p>
-        <p><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:info@corecloudkenya.com">info@corecloudkenya.com</a></p>
-        <p><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:+254793554535">+254 793 554 535</a></p>
-      </div>
-    </div>
-    
-    <div class="footer-bottom">
-      <p>&copy; 2025 CoreCloud Kenya | All Rights Reserved</p>
-    </div>
-  </footer>
+    </section>
 
-  <script>
-    // Performance optimization: Use requestIdleCallback when available
-    const scheduleWork = window.requestIdleCallback || ((cb) => setTimeout(cb, 1));
-    
-    // Debounce function for performance
-    function debounce(func, wait) {
-      let timeout;
-      return function executedFunction(...args) {
-        const later = () => {
-          clearTimeout(timeout);
-          func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-      };
-    }
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>CoreCloud<br>Innovating Kenya's digital future with secure and scalable solutions.</p>
+            <p class="mt-4">Nairobi, Kenya<br>
+            <a href="mailto:info@corecloudkenya.com" class="hover:text-blue-300">info@corecloudkenya.com</a><br>
+            <a href="tel:+254793554535" class="hover:text-blue-300">+254 793 554 535</a></p>
+            <p class="mt-4">© 2025 CoreCloud Kenya | All Rights Reserved</p>
+        </div>
+    </footer>
 
-    // Mobile menu toggle
-    document.addEventListener('DOMContentLoaded', function() {
-      const mobileMenuBtn = document.getElementById('mobile-menu-toggle');
-      const mobileNav = document.getElementById('mobile-nav');
-      
-      if (mobileMenuBtn && mobileNav) {
-        mobileMenuBtn.addEventListener('click', function() {
-          const isOpen = mobileNav.classList.contains('active');
-          mobileNav.classList.toggle('active');
-          mobileMenuBtn.setAttribute('aria-expanded', !isOpen);
-          
-          // Change icon
-          const icon = mobileMenuBtn.querySelector('i');
-          icon.className = isOpen ? 'fas fa-bars' : 'fas fa-times';
-        });
-        
-        // Close mobile menu when clicking on links
-        mobileNav.querySelectorAll('a').forEach(link => {
-          link.addEventListener('click', () => {
-            mobileNav.classList.remove('active');
-            mobileMenuBtn.setAttribute('aria-expanded', 'false');
-            mobileMenuBtn.querySelector('i').className = 'fas fa-bars';
-          });
-        });
-      }
-    });
-
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          targetElement.scrollIntoView({ 
-            behavior: 'smooth',
-            block: 'start'
-          });
-          
-          // Update focus for accessibility
-          targetElement.focus({ preventScroll: true });
+    <script>
+        // Toggle mobile menu
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
         }
-      });
-    });
 
-    // Header hide/show on scroll with performance optimization
-    let lastScroll = 0;
-    let ticking = false;
-    const header = document.querySelector('header');
-    
-    function updateHeader() {
-      const currentScroll = window.pageYOffset;
-      
-      if (currentScroll > lastScroll && currentScroll > 100) {
-        header.style.transform = 'translateY(-100%)';
-      } else {
-        header.style.transform = 'translateY(0)';
-      }
-      
-      lastScroll = currentScroll;
-      ticking = false;
-    }
-    
-    const debouncedScroll = debounce(() => {
-      if (!ticking) {
-        requestAnimationFrame(updateHeader);
-        ticking = true;
-      }
-    }, 10);
-    
-    window.addEventListener('scroll', debouncedScroll);
-
-    // Intersection Observer for animations
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    // Service cards animation
-    const serviceCards = document.querySelectorAll('.service-card');
-    const serviceObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-          scheduleWork(() => {
+        // Form submission handling
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const status = document.getElementById('form-status');
+            status.textContent = 'Sending...';
+            status.className = 'text-blue-900';
+            // Simulate form submission
             setTimeout(() => {
-              entry.target.classList.add('visible');
-            }, index * 100); // Stagger animation
-          });
-          serviceObserver.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    serviceCards.forEach(card => serviceObserver.observe(card));
-
-    // About section animation
-    const aboutElements = document.querySelectorAll('.about-text, .about-image');
-    const aboutObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          scheduleWork(() => {
-            entry.target.classList.add('visible');
-          });
-          aboutObserver.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    aboutElements.forEach(el => aboutObserver.observe(el));
-
-    // Enhanced particles system
-    function createParticles(canvasId, count = 60) {
-      const canvas = document.getElementById(canvasId);
-      if (!canvas) return;
-      
-      const ctx = canvas.getContext('2d');
-      let animationId;
-      let particles = [];
-      
-      function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-      }
-      
-      resizeCanvas();
-      
-      // Create particles
-      for (let i = 0; i < count; i++) {
-        particles.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          r: Math.random() * 2 + 1,
-          dx: (Math.random() - 0.5) * 0.8,
-          dy: (Math.random() - 0.5) * 0.8,
-          opacity: Math.random() * 0.5 + 0.2
+                status.textContent = 'Message sent successfully!';
+                status.className = 'text-green-600';
+                this.reset();
+            }, 1000);
         });
-      }
-      
-      function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        particles.forEach(p => {
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(6, 252, 235, ${p.opacity})`;
-          ctx.fill();
-          
-          // Update position
-          p.x += p.dx;
-          p.y += p.dy;
-          
-          // Bounce off edges
-          if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
-          if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
-          
-          // Keep particles in bounds
-          p.x = Math.max(0, Math.min(canvas.width, p.x));
-          p.y = Math.max(0, Math.min(canvas.height, p.y));
-        });
-        
-        animationId = requestAnimationFrame(animate);
-      }
-      
-      animate();
-      
-      // Optimized resize handler
-      const debouncedResize = debounce(() => {
-        resizeCanvas();
-        // Redistribute particles
-        particles = particles.map(p => ({
-          ...p,
-          x: Math.min(p.x, canvas.width),
-          y: Math.min(p.y, canvas.height)
-        }));
-      }, 250);
-      
-      window.addEventListener('resize', debouncedResize);
-      
-      // Cleanup function
-      return () => {
-        cancelAnimationFrame(animationId);
-        window.removeEventListener('resize', debouncedResize);
-      };
-    }
-
-    // Initialize particles
-    scheduleWork(() => {
-      createParticles('particles', 50);
-    });
-
-    // Enhanced counter animation
-    const counters = document.querySelectorAll('.counter');
-    const heroObserver = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        counters.forEach((counter, index) => {
-          scheduleWork(() => {
-            setTimeout(() => {
-              animateCounter(counter);
-            }, index * 200);
-          });
-        });
-        heroObserver.unobserve(entries[0].target);
-      }
-    }, { threshold: 0.5 });
-
-    function animateCounter(counter) {
-      const target = parseInt(counter.getAttribute('data-target'));
-      let count = 0;
-      const increment = Math.max(1, Math.ceil(target / 100));
-      
-      const updateCount = () => {
-        count += increment;
-        if (count > target) count = target;
-        
-        counter.textContent = count;
-        
-        if (count < target) {
-          requestAnimationFrame(updateCount);
-        }
-      };
-      
-      updateCount();
-    }
-
-    if (document.querySelector('.hero-cards')) {
-      heroObserver.observe(document.querySelector('.hero-cards'));
-    }
-
-    // Enhanced form handling with validation
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-      const formFields = {
-        name: document.getElementById('contact-name'),
-        email: document.getElementById('contact-email'),
-        message: document.getElementById('contact-message')
-      };
-      
-      const errorElements = {
-        name: document.getElementById('name-error'),
-        email: document.getElementById('email-error'),
-        message: document.getElementById('message-error')
-      };
-      
-      const statusElement = document.getElementById('form-status');
-      const submitBtn = contactForm.querySelector('button[type="submit"]');
-      const btnText = submitBtn.querySelector('.btn-text');
-      const btnLoader = submitBtn.querySelector('.btn-loader');
-
-      // Validation functions
-      function validateField(field, value) {
-        switch (field) {
-          case 'name':
-            return value.trim().length >= 2 ? null : 'Name must be at least 2 characters long';
-          case 'email':
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return emailRegex.test(value) ? null : 'Please enter a valid email address';
-          case 'message':
-            return value.trim().length >= 10 ? null : 'Message must be at least 10 characters long';
-          default:
-            return null;
-        }
-      }
-
-      function showError(field, message) {
-        const errorElement = errorElements[field];
-        if (errorElement) {
-          errorElement.textContent = message;
-          errorElement.style.display = 'block';
-          formFields[field].setAttribute('aria-invalid', 'true');
-        }
-      }
-
-      function hideError(field) {
-        const errorElement = errorElements[field];
-        if (errorElement) {
-          errorElement.style.display = 'none';
-          formFields[field].setAttribute('aria-invalid', 'false');
-        }
-      }
-
-      // Real-time validation
-      Object.keys(formFields).forEach(field => {
-        const input = formFields[field];
-        input.addEventListener('blur', () => {
-          const error = validateField(field, input.value);
-          if (error) {
-            showError(field, error);
-          } else {
-            hideError(field);
-          }
-        });
-
-        input.addEventListener('input', debounce(() => {
-          if (input.getAttribute('aria-invalid') === 'true') {
-            const error = validateField(field, input.value);
-            if (!error) {
-              hideError(field);
-            }
-          }
-        }, 300));
-      });
-
-      // Form submission
-      contactForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        // Validate all fields
-        let isValid = true;
-        Object.keys(formFields).forEach(field => {
-          const error = validateField(field, formFields[field].value);
-          if (error) {
-            showError(field, error);
-            isValid = false;
-          } else {
-            hideError(field);
-          }
-        });
-
-        if (!isValid) {
-          statusElement.className = 'error';
-          statusElement.textContent = 'Please fix the errors above';
-          return;
-        }
-
-        // Show loading state
-        submitBtn.disabled = true;
-        submitBtn.classList.add('loading');
-        btnText.style.display = 'none';
-        btnLoader.style.display = 'inline';
-        statusElement.textContent = '';
-
-        try {
-          // Simulate API call (replace with actual endpoint)
-          await new Promise(resolve => setTimeout(resolve, 2000));
-          
-          // Success
-          statusElement.className = 'success';
-          statusElement.textContent = 'Message sent successfully! We\'ll get back to you soon.';
-          contactForm.reset();
-          
-        } catch (error) {
-          // Error
-          statusElement.className = 'error';
-          statusElement.textContent = 'Failed to send message. Please try again or contact us directly.';
-        } finally {
-          // Reset button
-          submitBtn.disabled = false;
-          submitBtn.classList.remove('loading');
-          btnText.style.display = 'inline';
-          btnLoader.style.display = 'none';
-        }
-      });
-    }
-
-    // Keyboard navigation improvements
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        // Close mobile menu
-        const mobileNav = document.getElementById('mobile-nav');
-        const mobileMenuBtn = document.getElementById('mobile-menu-toggle');
-        if (mobileNav?.classList.contains('active')) {
-          mobileNav.classList.remove('active');
-          mobileMenuBtn?.setAttribute('aria-expanded', 'false');
-          mobileMenuBtn?.querySelector('i')?.setAttribute('class', 'fas fa-bars');
-        }
-      }
-    });
-
-    // Performance monitoring
-    if ('performance' in window) {
-      window.addEventListener('load', () => {
-        scheduleWork(() => {
-          const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
-          console.log(`Page loaded in ${loadTime}ms`);
-        });
-      });
-    }
-  </script>
+    </script>
 </body>
 </html>
