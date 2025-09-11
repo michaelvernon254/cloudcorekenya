@@ -1,212 +1,867 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CoreCloud - Secure Cloud Hosting & Software Solutions</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* Smooth scrolling for anchor links */
-        html {
-            scroll-behavior: smooth;
-        }
-        /* Ensure images don't overflow */
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CoreCloud Kenya offers secure cloud hosting, IT consulting, and custom software solutions to empower businesses.">
+  <meta name="keywords" content="cloud hosting, IT consulting, web development, app development, Kenya">
+  <link rel="icon" href="images/favicon.ico">
+  <link rel="canonical" href="https://corecloudkenya.com/">
+  <title>CoreCloud Kenya</title>
+ <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      background: #0a0a1a;
+      font-family: "Inter", sans-serif;
+      color: #E0E0FF;
+      overflow-x: hidden;
+    }
+    /* Particle canvas */
+    #particles, #contact-particles, #footer-particles {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+    }
+    h1, h2, h3 {
+      font-family: "Poppins", sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+    header {
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10,10,30,0.6);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(139,92,246,0.3);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: transform 0.3s ease-in-out;
+    }
+    header h1 {
+      font-size: 24px;
+      color: #8B5CF6;
+    }
+    nav a {
+      margin-left: 24px;
+      text-decoration: none;
+      color: #E0E0FF;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    nav a:hover, nav a:focus {
+      color: #06FCEB;
+      outline: none;
+    }
+    nav a:focus {
+      box-shadow: 0 0 5px #06FCEB;
+    }
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 120px 20px 160px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero h2 {
+      font-size: 52px;
+      background: linear-gradient(90deg, #8B5CF6, #06FCEB);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+      z-index: 2;
+    }
+    .hero p {
+      font-size: 18px;
+      color: #ccc;
+      margin-top: 10px;
+      position: relative;
+      z-index: 2;
+    }
+    .orbit-ring {
+      position: absolute;
+      border: 2px dashed rgba(139,92,246,0.3);
+      border-radius: 50%;
+      animation: spin 20s linear infinite;
+      z-index: 1;
+    }
+    .orbit1 {
+      width: 400px; height: 400px;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .orbit2 {
+      width: 600px; height: 600px;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      animation-duration: 35s;
+    }
+    @keyframes spin {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+    .btn {
+      background: linear-gradient(90deg, #8B5CF6, #06FCEB);
+      color: #fff;
+      border-radius: 12px;
+      padding: 12px 22px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 0 10px rgba(139,92,246,0.8), 0 0 25px rgba(6,252,235,0.5);
+      transition: all 0.2s ease-in-out;
+      display: inline-block;
+      margin-top: 20px;
+      position: relative;
+      z-index: 10; /* Increased to ensure clickability */
+    }
+    .btn:hover, .btn:focus {
+      transform: scale(1.08);
+      box-shadow: 0 0 18px rgba(139,92,246,0.9), 0 0 35px rgba(6,252,235,0.7);
+      outline: none;
+    }
+    .btn:focus {
+      box-shadow: 0 0 5px #06FCEB, 0 0 18px rgba(139,92,246,0.9);
+    }
+    /* Floating shapes in hero/about */
+    .floating-shape {
+      position: absolute;
+      width: 30px; height: 30px;
+      border: 2px solid #06FCEB;
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite alternate;
+      opacity: 0.6;
+      z-index: 1;
+    }
+    .shape1 { top: 20%; left: 25%; animation-delay: 0s; }
+    .shape2 { top: 60%; left: 70%; animation-delay: 3s; }
+    .shape3 { top: 10%; left: 80%; width: 20px; height: 20px; border-color: #8B5CF6; }
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(-20px) rotate(360deg); }
+    }
+    /* Services Section */
+    .services {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 60px 20px;
+      position: relative;
+    }
+    .services-header {
+      text-align: center;
+      margin-bottom: 40px;
+      max-width: 700px;
+    }
+    .services-header h2 {
+      font-family: "Poppins", sans-serif;
+      font-size: 32px;
+      color: #06FCEB;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+    .services-header p {
+      font-size: 16px;
+      color: #ccc;
+      line-height: 1.6;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      width: 100%;
+      max-width: 1200px;
+      position: relative;
+      z-index: 2;
+    }
+    .card {
+      background: rgba(20,20,40,0.7);
+      border: 1px solid rgba(139,92,246,0.5);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(139,92,246,0.5), 0 0 30px rgba(6,252,235,0.3);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease;
+      cursor: default;
+    }
+    .card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .card svg {
+      width: 50px;
+      height: 50px;
+      stroke: #06FCEB;
+      stroke-width: 2;
+      fill: none;
+      margin-bottom: 16px;
+      filter: drop-shadow(0 0 6px #06FCEB);
+      transition: filter 0.3s;
+    }
+    .card:hover svg, .card:focus svg {
+      filter: drop-shadow(0 0 14px #8B5CF6);
+    }
+    .card:hover, .card:focus {
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 0 40px rgba(139,92,246,0.9), 0 0 60px rgba(6,252,235,0.7);
+      outline: none;
+    }
+    /* About Section */
+    .about {
+      padding: 80px 20px;
+      background: rgba(10,10,30,0.9);
+      backdrop-filter: blur(8px);
+      color: #E0E0FF;
+      position: relative;
+    }
+    .about-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 60px;
+    }
+    .about-header h2 {
+      font-size: 36px;
+      color: #06FCEB;
+      margin-bottom: 12px;
+    }
+    .about-header p {
+      font-size: 16px;
+      color: #ccc;
+      line-height: 1.6;
+    }
+    .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 40px;
+      justify-content: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .about-text, .about-image {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+    .about-text.visible, .about-image.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .about-text {
+      flex: 1 1 400px;
+      max-width: 500px;
+    }
+    .about-text h3 {
+      font-size: 22px;
+      color: #8B5CF6;
+      margin-bottom: 8px;
+    }
+    .about-text p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+    .about-image {
+      flex: 1 1 400px;
+      max-width: 500px;
+      position: relative;
+    }
+    .about-image img {
+      width: 100%;
+      border-radius: 16px;
+      border: 1px solid rgba(139,92,246,0.4);
+      box-shadow: 0 0 12px rgba(139,92,246,0.3);
+    }
+    /* Contact Section */
+    .contact {
+      padding: 80px 20px;
+      background: rgba(10,10,30,0.9);
+      backdrop-filter: blur(10px);
+      color: #E0E0FF;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact.highlight {
+      animation: highlight 1s ease;
+    }
+    @keyframes highlight {
+      0% { box-shadow: 0 0 20px #06FCEB; }
+      100% { box-shadow: none; }
+    }
+    .contact-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 60px;
+    }
+    .contact-header h2 {
+      font-size: 36px;
+      color: #06FCEB;
+      margin-bottom: 12px;
+    }
+    .contact-header p {
+      font-size: 16px;
+      color: #ccc;
+      line-height: 1.6;
+    }
+    .contact-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .contact-form {
+      flex: 1 1 400px;
+      max-width: 500px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .contact-form label {
+      font-size: 14px;
+      color: #E0E0FF;
+      font-weight: 600;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(139,92,246,0.4);
+      background: rgba(20,20,40,0.6);
+      color: #E0E0FF;
+      font-size: 16px;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: #06FCEB;
+      box-shadow: 0 0 12px #06FCEB;
+    }
+    .btn-glow {
+      background: linear-gradient(90deg, #8B5CF6, #06FCEB);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      padding: 14px 22px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(139,92,246,0.8), 0 0 25px rgba(6,252,235,0.5);
+    }
+    .btn-glow:hover, .btn-glow:focus {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(139,92,246,1), 0 0 40px rgba(6,252,235,0.8);
+      outline: none;
+    }
+    .contact-info {
+      flex: 1 1 300px;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .info-item h3 {
+      font-family: "Poppins", sans-serif;
+      color: #8B5CF6;
+      margin-bottom: 6px;
+    }
+    .info-item p {
+      color: #ccc;
+    }
+    /* Generic section background */
+    .section-bg {
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.6;
+      z-index: -5;
+    }
+    /* Specific backgrounds */
+    #hero.section-bg {
+      background-image: url('images');
+    }
+    #services.section-bg {
+      background-image: url('images/services.png');
+    }
+    #about.section-bg {
+      background-image: url('images/about.jpg');
+    }
+    #contact.section-bg {
+      background-image: url('images/contact.jpg');
+    }
+    header img {
+      height: 80px;
+      width: auto;
+      display: block;
+    }
+    .hero-cards {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-top: 60px;
+      z-index: 2;
+      position: relative;
+    }
+    .hero-card {
+      background: rgba(20,20,40,0.7);
+      border: 1px solid rgba(139,92,246,0.5);
+      border-radius: 16px;
+      padding: 24px;
+      width: 200px;
+      text-align: center;
+      box-shadow: 0 0 12px rgba(139,92,246,0.5);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .hero-card:hover, .hero-card:focus {
+      transform: translateY(-10px);
+      box-shadow: 0 0 25px rgba(139,92,246,0.8);
+      outline: none;
+    }
+    .hero-card h3 {
+      font-family: "Poppins", sans-serif;
+      color: #06FCEB;
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+    .hero-card p {
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .counter {
+      color: #8B5CF6;
+      font-size: 28px;
+    }
+    /* Footer */
+    footer {
+      padding: 60px;
+      background: rgba(10,10,20,0.8);
+      border-top: 1px solid rgba(139,92,246,0.3);
+      backdrop-filter: blur(12px);
+      color: #ccc;
+      position: relative;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 40px;
+      margin-bottom: 30px;
+    }
+    .footer-col h2.footer-logo {
+      font-family: "Poppins", sans-serif;
+      font-size: 24px;
+      color: #8B5CF6;
+      margin-bottom: 12px;
+    }
+    .footer-col h3 {
+      font-family: "Poppins", sans-serif;
+      font-size: 18px;
+      margin-bottom: 16px;
+      color: #06FCEB;
+    }
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .footer-col ul li {
+      margin-bottom: 10px;
+    }
+    .footer-col ul li a {
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .footer-col ul li a:hover, .footer-col ul li a:focus {
+      color: #8B5CF6;
+      outline: none;
+    }
+    .footer-bottom {
+      border-top: 1px solid rgba(139,92,246,0.3);
+      padding-top: 16px;
+      text-align: center;
+      font-size: 14px;
+      color: #888;
+    }
+    .social-icons {
+      margin-top: 16px;
+      display: flex;
+      gap: 16px;
+    }
+    .social {
+      color: #ccc;
+      transition: all 0.3s ease;
+    }
+    .social:hover, .social:focus {
+      color: #8B5CF6;
+      filter: drop-shadow(0 0 8px #06FCEB);
+      outline: none;
+    }
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      header { padding: 20px 30px; }
+      .hero h2 { font-size: 40px; }
+      .orbit1 { width: 300px; height: 300px; }
+      .orbit2 { width: 450px; height: 450px; }
+      .about-content, .contact-content { flex-direction: column; gap: 30px; }
+    }
+    #services {
+  padding: 100px 20px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  background: url("images/serces.png") center/cover no-repeat fixed; /* 👈 background image */
+
+
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: #ccc;
+  margin-bottom: 50px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.service-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  padding: 30px;
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+}
+
+.service-card i {
+  color: #9f7aea;
+  margin-bottom: 15px;
+  text-shadow: 0 0 10px #9f7aea, 0 0 20px #9f7aea;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.service-card h3 {
+  margin: 10px 0;
+  font-size: 1.3rem;
+  color: #fff;
+}
+
+.service-card p {
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.8);
+}
+
+.service-card:hover i {
+  transform: scale(1.2);
+  color: #fff;
+}
+
+  </style>
 </head>
-<body class="font-sans text-gray-800 bg-gray-50">
-    <!-- Navigation -->
-    <nav class="bg-blue-900 text-white p-4 sticky top-0 z-50">
-        <div class="container mx-auto flex justify-between items-center flex-wrap">
-            <div class="text-2xl font-bold">CoreCloud</div>
-            <div class="space-x-4 md:flex hidden">
-                <a href="#about" class="hover:text-blue-300">About</a>
-                <a href="#services" class="hover:text-blue-300">Services</a>
-                <a href="#contact" class="hover:text-blue-300">Contact</a>
-            </div>
-            <button class="md:hidden focus:outline-none" onclick="toggleMenu()">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                </svg>
-            </button>
-            <div id="mobile-menu" class="hidden w-full md:hidden flex-col space-y-2 mt-4">
-                <a href="#about" class="hover:text-blue-300">About</a>
-                <a href="#services" class="hover:text-blue-300">Services</a>
-                <a href="#contact" class="hover:text-blue-300">Contact</a>
-            </div>
-        </div>
+<body>
+  <!-- JSON-LD Schema for SEO -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "CoreCloud Kenya",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Nairobi",
+        "addressCountry": "KE"
+      },
+      "email": "info@corecloudkenya.com",
+      "telephone": "+254793554535",
+      "url": "https://corecloudkenya.com"
+    }
+  </script>
+  <!-- Hero -->
+  <canvas id="particles" aria-hidden="true"></canvas>
+  <header>
+    <a href="index.html" aria-label="CoreCloud Kenya Home">
+      <img src="images/darklogo.png" alt="CoreCloud Logo" class="logo">
+    </a>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
     </nav>
+  </header>
+  <section id="hero" class="hero section-bg">
+    <div class="orbit-ring orbit1"></div>
+    <div class="orbit-ring orbit2"></div>
+    <div class="floating-shape shape1"></div>
+    <div class="floating-shape shape2"></div>
+    <h2>ELEVATING BUSINESSES THROUGH SECURE CLOUD HOSTING</h2>
+    <p>Empowering businesses with cutting-edge software solutions tailored to their unique needs. Our talented team of experts delivers innovative technology that drives growth, efficiency, and success in today's fast-paced digital world.</p>
+    <p>Secure • Scalable • Smart Solutions</p>
+    <div class="hero-cards">
+      <div class="hero-card">
+        <h3>Happy Clients</h3>
+        <p><span class="counter" data-target="30">0</span>+</p>
+      </div>
+      <div class="hero-card">
+        <h3>Systems Active</h3>
+        <p><span class="counter" data-target="25">0</span>+</p>
+      </div>
+      <div class="hero-card">
+        <h3>Hours in Support</h3>
+        <p><span class="counter" data-target="300">0</span>+</p>
+      </div>
+      <div class="hero-card">
+        <h3>Partners who trust us</h3>
+        <p><span class="counter" data-target="6">0</span></p>
+      </div>
+    </div>
+   <!-- <a href="#contact" class="btn">Get Started</a> -->
+  </section>
+  <!-- About Section -->
+  <section id="about" class="about section-bg">
+    <div class="about-header">
+      <h2>About CoreCloud</h2>
+      <h3>Who We Are</h3>
+      <p>At CoreCloud, we’re a team of passionate innovators transforming businesses through technology and design. From Cloud Hosting, IT Consulting, Web & App Development to Software solutions, we deliver tailored solutions that help our clients grow and thrive. Driven by creativity, collaboration, and a commitment to excellence, we work closely with every client to craft results that exceed expectations. Let’s build something amazing together.</p>
+    </div>
+    <div class="about-content">
+      <div class="about-text">
+        <h3>Our Mission</h3>
+        <p>To deliver reliable, scalable, and innovative cloud solutions tailored to the unique needs of each client. We strive to simplify technology, enhance efficiency, and drive growth by providing exceptional services in cloud hosting, IT consulting, web and app development, and digital solutions that transform businesses.</p>
+        <h3>Our Vision</h3>
+        <p>To be Kenya’s most trusted cloud solutions provider, empowering businesses to innovate, scale, and thrive in the digital era. We envision a future where every organization, big or small, can access secure, smart, and cutting-edge cloud technology.</p>
+      </div>
+      <div class="about-image">
+        <div class="floating-shape shape3"></div>
+        <img src="images/team.jpg" alt="CoreCloud Team" loading="lazy">
+      </div>
+    </div>
+  </section>
+  <!-- Services Section -->
+  <!-- Services Section -->
+<section id="services">
+  <h2 class="section-title">Our Services</h2>
+  <p class="section-subtitle">We offer a wide range of solutions to help businesses thrive in the digital age.</p>
 
-    <!-- Hero Section -->
-    <section class="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-16 md:py-24">
-        <div class="container mx-auto text-center px-4">
-            <h1 class="text-3xl md:text-5xl font-bold mb-4">Elevating Businesses Through Secure Cloud Hosting</h1>
-            <p class="text-lg md:text-xl mb-6 max-w-2xl mx-auto">Empowering businesses with cutting-edge software solutions tailored to their unique needs. Our talented team of experts delivers innovative technology that drives growth, efficiency, and success in today's fast-paced digital world.</p>
-            <p class="text-md md:text-lg font-semibold mb-8">Secure • Scalable • Smart Solutions</p>
-            <a href="#contact" class="bg-white text-blue-900 px-6 py-3 rounded-full font-semibold hover:bg-blue-100">Get Started Today</a>
+  <div class="services-grid">
+    <div class="service-card">
+      <i class="fas fa-globe fa-3x"></i>
+      <h3>Creative Web Design</h3>
+      <p>At CoreCloud, we believe a website should tell your story and connect with your audience. Our designs blend modern, futuristic styles with user-friendly layouts, creating sites that are fast, mobile-ready, and visually striking. From small businesses in Nairobi to companies across Africa, we craft digital experiences that feel fresh, engaging, and uniquely African.</p>
+    </div>
+
+    <div class="service-card">
+      <i class="fas fa-cloud fa-3x"></i>
+      <h3>Secure Cloud Hosting & VPS</h3>
+      <p>We understand that small and large businesses alike need reliable hosting they can trust without breaking the bank. That’s why we offer secure and scalable cloud solutions at affordable rates. Our hosting keeps your data safe, your site always online, and your business ready to grow — whether you’re in Nairobi or serving clients across Africa.</p>
+    </div>
+
+    <div class="service-card">
+      <i class="fas fa-code fa-3x"></i>
+      <h3>Smart Software Solutions</h3>
+      <p>Our team of experts build smart, practical software that helps businesses work faster and smarter. From custom apps to business tools, our solutions are designed to solve real challenges and fit the unique needs of Kenyan businesses. With affordable options and a focus on ease of use, we make technology work for you — so you can focus on growing your business.</p>
+    </div>
+
+    <div class="service-card">
+      <i class="fas fa-mobile-phone fa-3x"></i>
+      <h3>Custom App solutions</h3>
+      <p>Powered with the latest designs and AI models, we design apps tailored to the way you do business. Whether it’s a mobile app for your customers or a tool to streamline your operations, our custom solutions are built to be simple, reliable, and affordable. We work closely with you to turn your ideas into apps that help your business grow</p>
+    </div>
+  </div>
+</section>
+
+  <!-- Contact Section -->
+&nbsp;&nbsp;<section id="contact" class="contact"> <canvas id="contact-particles"></canvas> <!-- New particle canvas --> <div class="contact-header"> <h2>Get In Touch</h2> <p>Have questions or want to start your project? Reach out to us and we’ll respond promptly.</p> </div> <div class="contact-content"> <form class="contact-form"> <input type="text" placeholder="Your Name" required> <input type="email" placeholder="Your Email" required> <textarea placeholder="Your Message" rows="5" required></textarea> <button type="submit" class="btn-glow">Send Message</button> </form> <div class="contact-info"> <div class="info-item"> <h3>📍 Location</h3> 
+  <p>
+    View Park Towers,
+    19th Floor Monrovia Street,
+    NAIROBI, KENYA. </p> </div> <div class="info-item">
+      <h3>✉️ Email</h3> <p>info@corecloudkenya.com
+      info.corecloudkenya@gmail.com</p> </div> <div class="info-item"> <h3>📞 Phone</h3> <p>+254 793 554 535</p> </div> </div> </div> </section>
+&nbsp;&nbsp;
+  <!-- Footer -->
+  <footer>
+    <canvas id="footer-particles" aria-hidden="true"></canvas>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h2 class="footer-logo">CoreCloud</h2>
+        <p>Innovating Kenya’s digital future with secure and scalable solutions.</p>
+        <div class="social-icons">
+          <a href="#" class="social"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3.6L18 10h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" class="social"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37a4 4 0 1 1-2.91-2.91"/></svg></a>
+          <a href="#" class="social"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77 5.44 5.44 0 0 0 3.5 8.5c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 21.13V25"/></svg></a>
+          <a href="#" class="social"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6.1-2C4.3 16 2 9.5 2 9.5c0 0 4.7-1.2 6 4-.9-4.2 4.7-6.3 7-3.6z"/></svg></a>
         </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="py-12 bg-white">
-        <div class="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center px-4">
-            <div>
-                <h3 class="text-3xl font-bold text-blue-900">100+</h3>
-                <p>Happy Clients</p>
-            </div>
-            <div>
-                <h3 class="text-3xl font-bold text-blue-900">200+</h3>
-                <p>Systems Active</p>
-            </div>
-            <div>
-                <h3 class="text-3xl font-bold text-blue-900">5000+</h3>
-                <p>Hours in Support</p>
-            </div>
-            <div>
-                <h3 class="text-3xl font-bold text-blue-900">50+</h3>
-                <p>Partners who trust us</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">About CoreCloud</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div>
-                    <h3 class="text-2xl font-semibold mb-4">Who We Are</h3>
-                    <p>At CoreCloud, we're a team of passionate innovators transforming businesses through technology and design. From Cloud Hosting, IT Consulting, Web & App Development to Software solutions, we deliver tailored solutions that help our clients grow and thrive. Driven by creativity, collaboration, and a commitment to excellence, we work closely with every client to craft results that exceed expectations. Let's build something amazing together.</p>
-                </div>
-                <div>
-                    <h3 class="text-2xl font-semibold mb-4">Our Mission</h3>
-                    <p>To deliver reliable, scalable, and innovative cloud solutions tailored to the unique needs of each client. We strive to simplify technology, enhance efficiency, and drive growth
-
- by providing exceptional services in cloud hosting, IT consulting, web and app development, and digital solutions that transform businesses.</p>
-                </div>
-                <div class="md:col-span-2">
-                    <h3 class="text-2xl font-semibold mb-4 text-center">Our Vision</h3>
-                    <p class="text-center max-w-3xl mx-auto">To be Kenya's most trusted cloud solutions provider, empowering businesses to innovate, scale, and thrive in the digital era. We envision a future where every organization, big or small, can access secure, smart, and cutting-edge cloud technology.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">Our Services</h2>
-            <p class="text-center mb-12 max-w-2xl mx-auto">We offer a wide range of solutions to help businesses thrive in the digital age.</p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="p-6 bg-gray-50 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold mb-4">Creative Web Design</h3>
-                    <p>At CoreCloud, we believe a website should tell your story and connect with your audience. Our designs blend modern, futuristic styles with user-friendly layouts, creating sites that are fast, mobile-ready, and visually striking. From small businesses in Nairobi to companies across Africa, we craft digital experiences that feel fresh, engaging, and uniquely African.</p>
-                </div>
-                <div class="p-6 bg-gray-50 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold mb-4">Secure Cloud Hosting & VPS</h3>
-                    <p>We understand that small and large businesses alike need reliable hosting they can trust without breaking the bank. That's why we offer secure and scalable cloud solutions at affordable rates. Our hosting keeps your data safe, your site always online, and your business ready to grow — whether you're in Nairobi or serving clients across Africa.</p>
-                </div>
-                <div class="p-6 bg-gray-50 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold mb-4">Smart Software Solutions</h3>
-                    <p>Our team of experts build smart, practical software that helps businesses work faster and smarter. From custom apps to business tools, our solutions are designed to solve real challenges and fit the unique needs of Kenyan businesses. With affordable options and a focus on ease of use, we make technology work for you — so you can focus on growing your business.</p>
-                </div>
-                <div class="p-6 bg-gray-50 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold mb-4">Custom App Solutions</h3>
-                    <p>Powered with the latest designs and AI models, we design apps tailored to the way you do business. Whether it's a mobile app for your customers or a tool to streamline your operations, our custom solutions are built to be simple, reliable, and affordable. We work closely with you to turn your ideas into apps that help your business grow.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">Get In Touch</h2>
-            <p class="text-center mb-12 max-w-2xl mx-auto">Have questions or want to start your project? Reach out to us and we'll respond promptly.</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div>
-                    <form id="contact-form" class="space-y-4">
-                        <div>
-                            <label for="name" class="block text-sm font-medium">Your Name *</label>
-                            <input type="text" id="name" required class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-900">
-                        </div>
-                        <div>
-                            <label for="email" class="block text-sm font-medium">Your Email *</label>
-                            <input type="email" id="email" required class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-900">
-                        </div>
-                        <div>
-                            <label for="message" class="block text-sm font-medium">Your Message *</label>
-                            <textarea id="message" required class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-900" rows="5"></textarea>
-                        </div>
-                        <button type="submit" class="bg-blue-900 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-800">Send Message</button>
-                        <p id="form-status" class="text-sm"></p>
-                    </form>
-                </div>
-                <div class="space-y-4">
-                    <div>
-                        <h3 class="text-xl font-semibold">Location</h3>
-                        <p>View Park Towers,<br>19th Floor Monrovia Street,<br>Nairobi, Kenya</p>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-semibold">Email</h3>
-                        <p><a href="mailto:info@corecloudkenya.com" class="hover:text-blue-900">info@corecloudkenya.com</a><br>
-                        <a href="mailto:info.corecloudkenya@gmail.com" class="hover:text-blue-900">info.corecloudkenya@gmail.com</a></p>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-semibold">Phone</h3>
-                        <p><a href="tel:+254793554535" class="hover:text-blue-900">+254 793 554 535</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Blog Section -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">From Our Blog</h2>
-            <ul class="list-disc list-inside max-w-2xl mx-auto space-y-2">
-                <li><a href="#" class="hover:text-blue-900">🚀 The Future of Cloud in Africa</a></li>
-                <li><a href="#" class="hover:text-blue-900">🔒 Why Secure Hosting Matters</a></li>
-                <li><a href="#" class="hover:text-blue-900">💡 Top 5 IT Trends in 2025</a></li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-blue-900 text-white py-8">
-        <div class="container mx-auto px-4 text-center">
-            <p>CoreCloud<br>Innovating Kenya's digital future with secure and scalable solutions.</p>
-            <p class="mt-4">Nairobi, Kenya<br>
-            <a href="mailto:info@corecloudkenya.com" class="hover:text-blue-300">info@corecloudkenya.com</a><br>
-            <a href="tel:+254793554535" class="hover:text-blue-300">+254 793 554 535</a></p>
-            <p class="mt-4">© 2025 CoreCloud Kenya | All Rights Reserved</p>
-        </div>
-    </footer>
-
-    <script>
-        // Toggle mobile menu
-        function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
+      </div>
+      <div class="footer-col">
+        <h3>From Our Blog</h3>
+        <ul>
+          <li><a href="#">🚀 The Future of Cloud in Africa</a></li>
+          <li><a href="#">🔒 Why Secure Hosting Matters</a></li>
+          <li><a href="#">💡 Top 5 IT Trends in 2025</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Contact Us</h3>
+        <p>📍 Nairobi, Kenya</p>
+        <p>✉️ info@corecloudkenya.com</p>
+        <p>📞 +254 793 554 535</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 CoreCloud Kenya | All Rights Reserved</p>
+    </div>
+  </footer>
+  <script>
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+          // Add highlight effect to contact section
+          if (targetId === '#contact') {
+            targetElement.classList.add('highlight');
+            setTimeout(() => targetElement.classList.remove('highlight'), 1000);
+          }
         }
-
-        // Form submission handling
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const status = document.getElementById('form-status');
-            status.textContent = 'Sending...';
-            status.className = 'text-blue-900';
-            // Simulate form submission
-            setTimeout(() => {
-                status.textContent = 'Message sent successfully!';
-                status.className = 'text-green-600';
-                this.reset();
-            }, 1000);
+      });
+    });
+    // Header hide on scroll
+    let lastScroll = 0;
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+      if (currentScroll > lastScroll && currentScroll > 100) {
+        header.style.transform = 'translateY(-100%)';
+      } else {
+        header.style.transform = 'translateY(0)';
+      }
+      lastScroll = currentScroll;
+    });
+    // Card reveal
+    const cards = document.querySelectorAll('.card');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.2 });
+    cards.forEach(card => observer.observe(card));
+    // About reveal
+    const aboutElements = document.querySelectorAll('.about-text, .about-image');
+    const aboutObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.2 });
+    aboutElements.forEach(el => aboutObserver.observe(el));
+    // Particles.js simulation
+    function createParticles(canvasId, count = 60) {
+      const canvas = document.getElementById(canvasId);
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      let particles = [];
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          r: Math.random() * 2 + 1,
+          dx: (Math.random() - 0.5) * 0.5,
+          dy: (Math.random() - 0.5) * 0.5
         });
-    </script>
+      }
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = '#06FCEB';
+          ctx.fill();
+          p.x += p.dx;
+          p.y += p.dy;
+          if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+          if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+        });
+        requestAnimationFrame(animate);
+      }
+      animate();
+      window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        particles = particles.map(p => ({
+          ...p,
+          x: Math.min(p.x, canvas.width),
+          y: Math.min(p.y, canvas.height)
+        }));
+      });
+    }
+    createParticles('particles', 60);
+    createParticles('contact-particles', 40);
+    createParticles('footer-particles', 30);
+    // Animated Counters with IntersectionObserver
+    const counters = document.querySelectorAll('.counter');
+    const heroObserver = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) {
+        counters.forEach(counter => {
+          const target = +counter.getAttribute('data-target');
+          let count = 0;
+          const increment = Math.ceil(target / 200);
+          const updateCount = () => {
+            count += increment;
+            if (count > target) count = target;
+            counter.innerText = count;
+            if (count < target) {
+              requestAnimationFrame(updateCount);
+            }
+          };
+          updateCount();
+        });
+        heroObserver.unobserve(entries[0].target);
+      }
+    }, { threshold: 0.5 });
+    heroObserver.observe(document.querySelector('.hero-cards'));
+  </script>
 </body>
 </html>
